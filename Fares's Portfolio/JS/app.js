@@ -206,7 +206,6 @@ gsap.from(".about-text", {
           });
   
           newBtn.classList.add("hidden");
-          projectSection.style.height = heightMultiplier * children.length + "vh";
       });
   } else {
       projectSection.style.height = "auto";
