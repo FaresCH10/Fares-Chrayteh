@@ -198,14 +198,26 @@ gsap.from(".about-text", {
   
       // Remove old listeners if any (optional)
       const newBtn = showMoreBtn.cloneNode(true);
-      showMoreBtn.parentNode.replaceChild(newBtn, showMoreBtn);
-  
-      newBtn.addEventListener("click", () => {
+      newBtn.innerText = "show less"
+      showMoreBtn.addEventListener("click", () => {
           children.forEach(child => {
               child.style.display = "block";
           });
-  
-          newBtn.classList.add("hidden");
+
+          showMoreBtn.classList.add("hidden")
+          document.querySelector(".show-more").appendChild(newBtn)
+          newBtn.classList.remove("hidden");
+          newBtn.addEventListener("click", () => {
+            children.forEach((child,index) => {
+                if (index >= limit) 
+                    child.style.display = "none"
+
+                newBtn.classList.add("hidden");
+                showMoreBtn.classList.remove("hidden")
+            })
+
+          })
+          
       });
   } else {
       projectSection.style.height = "auto";
