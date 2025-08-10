@@ -196,12 +196,19 @@ gsap.from(".about-text", {
   
       showMoreBtn.classList.remove("hidden");
   
-      // Remove old listeners if any (optional)
       const newBtn = showMoreBtn.cloneNode(true);
       newBtn.innerText = "show less"
       showMoreBtn.addEventListener("click", () => {
-          children.forEach(child => {
+          children.forEach((child,index) => {
               child.style.display = "block";
+
+              gsap.from(child, {
+                opacity: 0,
+                y: 50,
+                duration: 0.5,
+                ease: "bounce.out",
+                delay: index * 0.1
+              });
           });
 
           showMoreBtn.classList.add("hidden")
@@ -214,6 +221,7 @@ gsap.from(".about-text", {
 
                 newBtn.classList.add("hidden");
                 showMoreBtn.classList.remove("hidden")
+                window.location.href = "#project"
             })
 
           })
@@ -224,10 +232,68 @@ gsap.from(".about-text", {
   }
 
 
+  //animation project section
+
+  gsap.set(".card", {
+    scale: 0,
+  })
+
+  gsap.to(".card", {
+    scrollTrigger: {
+        trigger: ".project-section",
+        start: "top 50%",
+        toggleActions: "play none none none"  
+    },
+    scale: 1,
+    duration: 1,
+    ease: "bounce.out",
+    stagger: .2
+  })
+
+
+  //Skills Section
+
+  document.querySelectorAll('.range').forEach(range => {
+    let input = range.querySelector('input[type="range"]');
+    let tooltip = range.querySelector('span');
+
+    function updateTooltip() {
+        let value = input.value;
+        tooltip.textContent = value;
+
+        let min = input.min || 0;
+        let max = input.max || 100;
+        let percent = ((value - min) / (max - min)) * 100;
+
+        tooltip.style.left = `calc(${percent}% + (${8 - percent * 0.15}px))`;
+        
+    }
+    
+
+    updateTooltip(); 
+    input.addEventListener('input', updateTooltip);
+
+    
+});
+
+
+//skill section animation
 
 
 
+gsap.from(
+    ".range input",
+    { 
+        scrollTrigger: {
+            trigger: ".skills-section",
+            start: "top 50%",
+            toggleActions: "play none none none"
+          },
+        value: 0,
+        duration: 1,
+        stagger: 0.1
+    }
+  );
 
-  
 
 

@@ -9,7 +9,6 @@
 
 body {
     scroll-behavior: smooth;
-    height: 10000px;
 }
 
 
@@ -129,7 +128,7 @@ body {
 .home-section .image-container img {
     width: 300px;
     border-radius: 200px;
-    clip-path: polygon(25% 0%, 100% 0%, 75% 100%, 90% 6%)
+    clip-path: polygon(50% 0%, 100% 16%, 50% 100%, 100% 16%);
 }
 
 
@@ -181,6 +180,7 @@ body {
     flex-direction: column;
     align-items: center;
     transition: all .5s;
+    opacity: 1;
 }
 
 .project-section h4 {
@@ -302,6 +302,62 @@ body {
     color: #000;
 }
 
+/* skills section */
+.skills-section {
+    background: #222;
+    color: #fff;
+    height: 100vh;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.skills-section h1 {
+    font-size: 4rem;
+    text-shadow: 0px 0px 50px rgba(255,255,255,1);
+}
+.skills-section p {
+    margin-top: 10px;
+    font-size: 1.2rem;
+}
+
+.skills-section .skills-container {
+    width: 100%;
+    padding: 40px;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+
+.skills-section .skills-container .range {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+    position: relative;
+}
+
+.skills-section .skills-container .range label {
+    font-size: 2rem;
+}
+
+.skills-section .skills-container .range span {
+    position: absolute;
+    top: 10px;
+    color: white;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 1.4rem;
+    transform: translateX(-50%);
+    white-space: nowrap;
+    pointer-events: none;
+}
+
+
+
 
 
 /* RESPONSIVE */
@@ -339,6 +395,16 @@ body {
     .project-container .card {
         width: 200px;
         height: 300px;
+    }
+
+    .skills-section .skills-container {
+        grid-template-columns: 100%;
+    }
+    .skills-section .skills-container .range label {
+        font-size: 1rem;
+    }
+    .skills-section .skills-container .range span {
+        top: -10px
     }
 }
 
