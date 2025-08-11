@@ -301,7 +301,7 @@ gsap.from(
 gsap.from(".blog-card", {
     scrollTrigger: {
         trigger: ".blog-section",
-        start: "top 80%",
+        start: "top 60%",
         toggleActions: "play none none none"
       },
     height: 0,
