@@ -308,6 +308,7 @@ gsap.from(".blog-card", {
     ease: "power3",
     delay: .5,
     stagger: .2,
+    ease: "bounce.out",
     duration: 1,
 })
 
