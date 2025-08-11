@@ -306,6 +306,7 @@ gsap.from(".blog-card", {
       },
     height: 0,
     ease: "power3",
+    delay: .5,
     stagger: .2,
     duration: 1,
 })
