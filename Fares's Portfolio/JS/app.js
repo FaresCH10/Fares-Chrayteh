@@ -104,7 +104,7 @@ gsap.from(".about-text", {
     scrollTrigger: {
       trigger: ".about-section",
       start: "top 80%",
-      toggleActions: "play reverse play none"
+      toggleActions: "play none none none"
     },
     x: -100,
     opacity: 0,
@@ -174,7 +174,7 @@ gsap.from(".about-text", {
   if (screenWidth > 1680) {
       limit = 4;
       heightMultiplier = 30;
-  } else if (screenWidth > 1200) {
+  } else if (screenWidth > 1000) {
       limit = 3;
       heightMultiplier = 30;
   } else if (screenWidth > 540) {
@@ -236,6 +236,7 @@ gsap.from(".about-text", {
 
   gsap.set(".card", {
     scale: 0,
+    opacity: 0,
   })
 
   gsap.to(".card", {
@@ -245,7 +246,8 @@ gsap.from(".about-text", {
         toggleActions: "play none none none"  
     },
     scale: 1,
-    duration: 1,
+    opacity: 1,
+    duration: .5,
     ease: "bounce.out",
     stagger: .2
   })
@@ -254,7 +256,7 @@ gsap.from(".about-text", {
   //Skills Section
 
   document.querySelectorAll('.range').forEach(range => {
-    let input = range.querySelector('input[type="range"]');
+    let input = range.querySelector('input');
     let tooltip = range.querySelector('span');
 
     function updateTooltip() {
@@ -294,6 +296,19 @@ gsap.from(
         stagger: 0.1
     }
   );
+
+//blog section animation 
+gsap.from(".blog-card", {
+    scrollTrigger: {
+        trigger: ".blog-section",
+        start: "top 80%",
+        toggleActions: "play none none none"
+      },
+    height: 0,
+    ease: "power3",
+    stagger: .2,
+    duration: 1,
+})
 
 
 
