@@ -116,7 +116,7 @@ gsap.from(".about-text", {
     scrollTrigger: {
       trigger: ".about-section",
       start: "top 80%",
-      toggleActions: "play reverse play none"
+      toggleActions: "play none none none"
     },
     x: 100,
     opacity: 0,
@@ -306,6 +306,7 @@ gsap.from(".blog-card", {
       },
     opacity: 0,
     stagger: .2,
+    delay: .2,
     ease: "bounce.out",
     duration: 1,
 })
@@ -352,6 +353,20 @@ cards.forEach(card => {
     });
   });
 });
+
+//animation to all section
+const sections = Array.from(document.querySelectorAll("section"));
+sections.forEach(section => {
+    gsap.from(section, {
+      scrollTrigger: {
+        trigger: section,
+        start: "top 80%",
+        toggleActions: "play none none none"
+      },
+      opacity: 0,
+      duration: .2,
+    });
+  });
 
 
 
