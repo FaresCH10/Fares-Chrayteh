@@ -304,13 +304,54 @@ gsap.from(".blog-card", {
         start: "top 60%",
         toggleActions: "play none none none"
       },
-    height: 0,
-    ease: "power3",
-    delay: .5,
+    opacity: 0,
     stagger: .2,
     ease: "bounce.out",
     duration: 1,
 })
+
+
+const cards = document.querySelectorAll(".blog-card");
+
+cards.forEach(card => {
+  card.addEventListener("mousemove", (e) => {
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left;  // mouse X inside card
+    const y = e.clientY - rect.top;   // mouse Y inside card
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+    
+    const deltaX = x - centerX;
+    const deltaY = y - centerY;
+    
+    const rotateX = (-deltaX / centerX) * 10;  // max 10 degrees rotation
+    const rotateY = (deltaY / centerY) * 10;
+
+    gsap.to(card, {
+      rotationX: rotateX,
+      rotationY: rotateY,
+      duration: 0.3,
+      ease: "power1.out",
+      transformPerspective: 1000
+    });
+
+    gsap.to(card, {
+      boxShadow: "0 20px 40px rgba(0,0,0,0.4)",
+      duration: 0.3
+    });
+  });
+
+  card.addEventListener("mouseleave", () => {
+    gsap.to(card, {
+      rotationX: 0,
+      rotationY: 0,
+      duration: 0.5,
+      ease: "power2.out",
+      transformPerspective: 1000,
+      boxShadow: "0 6px 15px rgba(0,0,0,0.3)"
+    });
+  });
+});
 
 
 
