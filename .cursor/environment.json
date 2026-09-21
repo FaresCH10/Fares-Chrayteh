@@ -1,0 +1,16 @@
+{
+  "name": "Fares Chrayteh Portfolio",
+  "terminals": [
+    {
+      "name": "portfolio-server",
+      "command": "cd \"Fares's Portfolio\" && python3 -m http.server 8080",
+      "description": "Static HTTP server for the portfolio site, available at http://localhost:8080"
+    }
+  ],
+  "ports": [
+    {
+      "name": "portfolio web server",
+      "port": 8080
+    }
+  ]
+}
